@@ -2,7 +2,7 @@ import os
 import sys
 
 if sys.version_info >= (3,0):
-	input = raw_input
+	raw_input = input
 
 answer = raw_input("Update system? ").lower()
 
