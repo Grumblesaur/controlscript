@@ -13,7 +13,7 @@ if destination == "upstream":
 	os.system("git push upstream %s" %branch)
 
 elif destination == "origin":
-	os.system("git push origin %s") %branch)
+	os.system("git push origin %s" %branch)
 
 else:
 	sys.stdout.write("Destination not found.\n")
