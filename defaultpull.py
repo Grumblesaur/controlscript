@@ -5,7 +5,7 @@ if sys.version_info >= (3,0):
 
 target = raw_input("Target 'upstream' or 'origin'? ").lower()
 
-branch = raw_input("Branch (leave blank for 'master': ").lower()
+branch = raw_input("Branch (leave blank for 'master'): ").lower()
 
 if target == "upstream" or target == "u":
 	os.system("git pull upstream %s" %branch)
