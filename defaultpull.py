@@ -7,6 +7,9 @@ target = raw_input("Target 'upstream' or 'origin'? ").lower()
 
 branch = raw_input("Branch (leave blank for 'master'): ").lower()
 
+if branch == "":
+	branch = "master"
+
 if target == "upstream" or target == "u":
 	os.system("git pull upstream %s" %branch)
 
