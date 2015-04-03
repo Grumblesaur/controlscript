@@ -15,5 +15,7 @@ elif language == "lua":
 	os.system("git add *.lua && git commit -a")
 elif language == "perl":
 	os.system("git add *.pl && git commit -a")
+elif language == "hack" or language == "assembly" or language == "asm":
+	os.system("git add *.hack *.asm && git commit -a")
 else:
 	sys.stdout.write("Language not specified in commit.py.\n")
