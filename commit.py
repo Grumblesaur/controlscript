@@ -7,7 +7,7 @@ if sys.version_info >= (3,0):
 
 language = raw_input("Language for this git repo? ").lower()
 
-if language == "python":
+if language == "python" or language == "py":
 	os.system("git add *.py && git commit -a")
 elif language == "c++":
 	os.system("git add *.cpp *.h && git commit -a")
@@ -17,6 +17,3 @@ elif language == "perl":
 	os.system("git add *.pl && git commit -a")
 else:
 	sys.stdout.write("Language not specified in commit.py.\n")
-	exit()
-
-sys.stdout.write("Commit completed.\n")

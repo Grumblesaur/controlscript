@@ -9,10 +9,10 @@ branch = raw_input("Enter branch (leave blank for 'master') ")
 if branch == "":
 	branch = "master"
 
-if destination == "upstream":
+if destination == "upstream" or destination == "u":
 	os.system("git push upstream %s" %branch)
 
-elif destination == "origin":
+elif destination == "origin" or destination == "o":
 	os.system("git push origin %s" %branch)
 
 else:
