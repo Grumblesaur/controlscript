@@ -17,7 +17,7 @@ comment = ""
 multistart = ''
 multiend = ''
 
-if language == "c++" or "cpp" or "c" or "cxx":
+if language == "c++" or "cpp" or "c" or "cxx" or "h" or "java":
 	comment = "//"
 	multistart = "/*"
 	multiend = "*/"
@@ -31,6 +31,11 @@ elif language == "py":
 	comment = "#"
 	multistart = '"""'
 	multiend = '"""'
+
+elif language == "sh" or "bash":
+	comment = "#"
+	multistart = ": '"
+	multiend = "'"
 
 else:
 	sys.stdout.write("Language comment style unknown.\n")
