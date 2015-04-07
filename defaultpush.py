@@ -6,7 +6,7 @@ if sys.version_info >= (3,0):
 destination = raw_input("Target 'upstream' or 'origin'? ").lower()
 branch = raw_input("Enter branch (leave blank for 'master') ").lower()
 
-if branch == "":
+if branch == "" or "m":
 	branch = "master"
 
 if destination == "upstream" or destination == "u":

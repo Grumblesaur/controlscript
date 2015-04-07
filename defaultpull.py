@@ -7,7 +7,7 @@ target = raw_input("Target 'upstream' or 'origin'? ").lower()
 
 branch = raw_input("Branch (leave blank for 'master'): ").lower()
 
-if branch == "":
+if branch == "" or "m":
 	branch = "master"
 
 if target == "upstream" or target == "u":
