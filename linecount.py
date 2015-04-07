@@ -44,6 +44,7 @@ else:
 	if ans == 'y':
 		os.system("cd /home/james/Programming/python/linecounter")
 		os.system("vim linecount.py")
+		sys.exit()
 
 # counting variables
 total = 0
