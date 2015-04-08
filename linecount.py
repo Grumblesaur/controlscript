@@ -14,8 +14,8 @@ else:
 readfile = open(filename, 'r')
 
 comment = ""
-multistart = ''
-multiend = ''
+multistart = '`````'
+multiend = '`````'
 
 if language == "c++" or "cpp" or "c" or "cxx" or "h" or "java":
 	comment = "//"
@@ -36,6 +36,9 @@ elif language == "sh" or "bash":
 	comment = "#"
 	multistart = ": '"
 	multiend = "'"
+
+elif language == "r":
+	comment = "#"
 
 else:
 	sys.stdout.write("Language comment style unknown.\n")
