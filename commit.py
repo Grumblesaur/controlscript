@@ -5,27 +5,27 @@ import sys, os
 if sys.version_info >= (3,0):
 	raw_input = input
 
-language = raw_input("Language for this git repo? ").lower()
+l = raw_input("Language for this git repo? ").lower()
 
 # this is admittedly a despicable number of conditionals,
 # but blame python for not having a fucking switch statement
 
-if language == "python" or "py":
+if l == "python" or l == "py":
 	os.system("git add *.py && git commit -a")
 
-elif language == "c++":
+elif l == "c++" or l == "cpp":
 	os.system("git add *.cpp *.h && git commit -a")
 
-elif language == "lua":
+elif l == "lua":
 	os.system("git add *.lua && git commit -a")
 
-elif language == "perl" or "pl":
+elif l == "perl" or l == "pl":
 	os.system("git add *.pl && git commit -a")
 
-elif language == "hack" or "assembly" or "asm":
+elif l == "hack" or l == "assembly" or l == "asm":
 	os.system("git add *.hack *.asm && git commit -a")
 
-elif language == "hdl":
+elif l == "hdl":
 	os.system("git add *.hdl && git commit -a")
 
 else:
