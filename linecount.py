@@ -63,6 +63,8 @@ for line in readfile:
 		multiline = False
 	elif line.strip() == "":
 		noncode += 1
+	elif line.lstrip()[0:len(comment)-1] == comment:
+		noncode += 1
 	else:
 		code += 1
 
