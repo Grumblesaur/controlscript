@@ -56,21 +56,28 @@ noncode = 0
 multiline = False
 
 for line in readfile:
+	# count indented comments as noncode
 	if (line.lstrip()[0:len(comment)-1] == comment) or (multiline == True):
 		noncode += 1
-	elif line[0:len(multistart)-1] == multistart:
+	# count multiline comment start as noncode
+	elif multistart in line:
 		noncode += 1
 		multiline = True
+	# count multiline comment end as noncode
 	elif (multiline == True) and (multiend in line):
 		noncode += 1
 		multiline = False
+	# count empty lines as noncode
 	elif line.strip() == "":
 		noncode += 1
+	# count logical lines as code
 	else:
 		code += 1
 
+# find total length of file
 total = code + noncode
 
+# print information to console
 sys.stdout.write(str(total) + " lines in file '%s'.\n" %filename)
 sys.stdout.write(str(code) + " lines of code.\n")
 sys.stdout.write(str(noncode) + " lines of non-code.\n")
