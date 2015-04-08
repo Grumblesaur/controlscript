@@ -56,7 +56,7 @@ noncode = 0
 multiline = False
 
 for line in readfile:
-	if (line[0:1] == comment) or (multiline == True):
+	if (line.lstrip[0:len(comment)-1] == comment) or (multiline == True):
 		noncode += 1
 	elif line[0:len(multistart)-1] == multistart:
 		noncode += 1
@@ -65,8 +65,6 @@ for line in readfile:
 		noncode += 1
 		multiline = False
 	elif line.strip() == "":
-		noncode += 1
-	elif line.lstrip()[0:len(comment)-1] == comment:
 		noncode += 1
 	else:
 		code += 1
