@@ -29,7 +29,9 @@ multiend = '`````'
 # language style options
 
 # c-family language style
-if language == "c++" or "cpp" or "c" or "cxx" or "h" or "java":
+cExtensions = ["c++", "cpp", "c", "cc", "h", "hpp", "cxx",
+			   "hxx", "hh", "java", "cs", "m"] # fuck you objective-c
+if language in cExtensions:
 	comment = "//"
 	multistart = "/*"
 	multiend = "*/"
