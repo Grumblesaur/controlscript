@@ -28,27 +28,36 @@ multiend = '`````'
 
 # language style options
 
+# c-family language style
 if language == "c++" or "cpp" or "c" or "cxx" or "h" or "java":
 	comment = "//"
 	multistart = "/*"
 	multiend = "*/"
 
+# lua style
 elif language == "lua":
 	comment = "--"
 	multistart = "--[["
 	multiend = "]]"
 
+# python style
 elif language == "py":
 	comment = "#"
 	multistart = '"""'
 	multiend = '"""'
 
-elif language == "sh" or "bash":
+# bash shell style
+elif language == "sh":
 	comment = "#"
 	multistart = ": '"
 	multiend = "'"
 
+# r style
 elif language == "r":
+	comment = "#"
+
+# perl style
+elif language == "pl":
 	comment = "#"
 
 else:
@@ -69,32 +78,25 @@ noncode = 0
 isMulti = False
 
 for line in readfile:
-	# begin logic for nonempty lines
-	if line != "":
-		# begin logic for non-whitespace lines
-		if line.lstrip() != "":
-			# treat comment lines as noncode
-			temp = line.lstrip()
-			if temp[0:len(comment)-1] == comment:
-				noncode += 1
-			elif temp[0:len(multistart)-1] == multistart:
-				noncode += 1
-				isMulti = True
-			elif (multiend in line) and (isMulti == True):
-				noncode += 1
-				isMulti = False
-			elif (multiend not in line) and (isMulti == True):
-				noncode += 1
-			# treat all other lines as code
-			else:
-				code += 1
-		# treat whitespace lines as noncode
-		else:
-			noncode += 1
-	# treat empty lines as noncode
-	else:
+	# empty or single-comment logic
+	if line == "":
 		noncode += 1
-		
+	elif line.strip() == "":
+		noncode += 1
+	elif line.lstrip()[0:len(comment) - 1] == comment:
+		noncode += 1
+	# multi-line comment logic
+	elif (multistart in line) and (isMulti == False):
+		noncode += 1
+		isMulti = True
+	elif (multiend in line) and (isMulti == True):
+		noncode += 1
+		isMulti = False
+	elif isMulti == True:
+		noncode += 1
+	# actual code logic
+	else:
+		code += 1
 # find total length of file
 total = code + noncode
 
