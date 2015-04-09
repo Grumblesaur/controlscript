@@ -1,5 +1,9 @@
 import sys, os
 
+# edit in your filepath to this directory and name of text editor here
+filepath = "/home/james/Programming/python/shellscripts"
+editor = "vim"
+
 # compatibility between Python 2 and Python 3
 if sys.version_info >= (3,0):
 	raw_input = input
@@ -69,8 +73,8 @@ else:
 	
 	# go there, open the file in vim	
 	if ans == 'y':
-		os.system("cd /home/james/Programming/python/linecounter")
-		os.system("vim linecount.py")
+		os.system("cd %s" %filepath)
+		os.system("%s linecount.py" %editor)
 		sys.exit()
 
 # counting variables

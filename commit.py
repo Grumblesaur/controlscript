@@ -1,6 +1,8 @@
-# script to commit to a git repo for a given language
-
 import sys, os
+
+# edit in the filepath to this directory and text editor name here
+filepath = "/home/james/Programming/python/shellscripts"
+editor = "vim"
 
 if sys.version_info >= (3,0):
 	raw_input = input
@@ -32,4 +34,5 @@ else:
 	sys.stdout.write("Language not specified in commit.py.\n")
 	i = raw_input("Would you like to add this language now? (Y/N): ")
 	if i.lower() == "y":
-		os.system("goshell && vim commit.py")
+		os.system("cd %s" %filepath)
+		os.system("%s commit.py" %editor)
