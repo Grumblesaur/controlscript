@@ -14,54 +14,60 @@ if len(sys.argv) == 1 or len(sys.argv) > 2:
 
 filename = sys.argv[1]
 
+# require known file extension to count lines of code
 if "." not in filename:
 	sys.stdout.write("No file extension!\n")
 	sys.exit()
 
+# grab the file extension and use as language name
 language = filename.split(".")[1]
 
 # open source file
 readfile = open(filename, 'r')
 
-comment = ""
+comment = "" # guaranteed not to be empty during counting process
 multistart = '`````' # dummy markers for languages w/o multiline comments
-multiend = '`````'
+multiend = '`````'   # program would blow chunks w/ empty strings
 
 # language style options
 
-# c-family language style
-cExtensions = ["c++", "cpp", "c", "cc", "h", "hpp", "cxx",
-			   "hxx", "hh", "java", "cs", "m"] # fuck you objective-c
-if language in cExtensions:
+# c-like comment styles
+cLike = ["c++", "cpp", "c", "cc", "h", "hpp", "cxx",
+			   "hxx", "hh", "java", "cs", "m", "d", "b"]
+# lua-like comment styles
+luaLike = ["lua", "adb", "ads", "e", "ex", "exw", "edb", "hs", "lhs"]
+
+# python-like comment styles
+pythonLike = ["py", "r", "sh", "pl", "jl", "rbw", "rb"]
+
+# lisp-like comment styles
+lispExtensions = ["clj", "cljs", "edn", "lisp", "lsp", "l", "cl", "fasl"]
+
+if language in cLike:
 	comment = "//"
 	multistart = "/*"
 	multiend = "*/"
 
-# lua style
-elif language == "lua":
+elif language in luaLike:
 	comment = "--"
-	multistart = "--[["
-	multiend = "]]"
+	if language == "lua":
+		multistart = "--[["
+		multiend = "]]"
 
-# python style
-elif language == "py":
+elif language in pythonLike:
 	comment = "#"
-	multistart = '"""'
-	multiend = '"""'
+	if language == "py":
+		multistart = '"""'
+		multiend = '"""'
+	elif language == "jl":
+		multistart = "#="
+		multiend = "=#"
+	elif language == "rb" or language == "rbw":
+		multistart = "=begin"
+		multiend = "=end"
 
-# bash shell style
-elif language == "sh":
-	comment = "#"
-	multistart = ": '"
-	multiend = "'"
-
-# r style
-elif language == "r":
-	comment = "#"
-
-# perl style
-elif language == "pl":
-	comment = "#"
+elif language in lispExtensions:
+	comment = ";"
 
 else:
 	# provide option for user to add unknown comment styles
@@ -73,7 +79,9 @@ else:
 		os.system("cd %s" %userinfo.filepath)
 		os.system("%s linecount.py" %userinfo.editor)
 		sys.exit()
+	
 	else:
+		sys.stdout.write("Linecount aborted.\n")
 		sys.exit()
 
 # counting variables
@@ -83,6 +91,7 @@ noncode = 0
 isMulti = False
 
 for line in readfile:
+
 	# empty or single-comment logic
 	if line == "":
 		noncode += 1
@@ -90,6 +99,7 @@ for line in readfile:
 		noncode += 1
 	elif line.lstrip()[0:len(comment) - 1] == comment:
 		noncode += 1
+
 	# multi-line comment logic
 	elif (multistart in line) and (isMulti == False):
 		noncode += 1
@@ -99,9 +109,11 @@ for line in readfile:
 		isMulti = False
 	elif isMulti == True:
 		noncode += 1
+
 	# actual code logic
 	else:
 		code += 1
+
 # find total length of file
 total = code + noncode
 
