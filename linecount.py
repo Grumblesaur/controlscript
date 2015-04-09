@@ -73,6 +73,8 @@ else:
 		os.system("cd %s" %userinfo.filepath)
 		os.system("%s linecount.py" %userinfo.editor)
 		sys.exit()
+	else:
+		sys.exit()
 
 # counting variables
 total = 0
