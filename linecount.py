@@ -6,7 +6,7 @@ if sys.version_info >= (3,0):
 	raw_input = input
 
 # check for file argument
-if len(sys.argv) == 1 or len(sys.argv) > 2:
+if len(sys.argv) != 2:
 	# print usage instructions and bail out if given invalid arguments
 	sys.stdout.write("Usage:\n")
 	sys.stdout.write("'linecount.py <input file>'\n")
