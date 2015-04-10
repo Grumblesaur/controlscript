@@ -7,10 +7,10 @@ if sys.version_info >= (3,0):
 if len(sys.argv) != 2:
 	# when improper argument count is passed, print usage and exit
 	sys.stdout.write("Usage:\n")
-	sys.stdout.write("commit <language name or file extension w/o '.'\n")
+	sys.stdout.write("'commit <language name or file extension>' \n")
 	sys.exit()
 
-l = sys.argv[1]
+l = sys.argv[1].lstrip('.')
 
 # this is admittedly a despicable number of conditionals,
 # but blame python for not having a fucking switch statement
