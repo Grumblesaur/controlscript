@@ -10,7 +10,7 @@ if len(sys.argv) != 2:
 	sys.stdout.write("'commit <language name or file extension>' \n")
 	sys.exit()
 
-l = sys.argv[1].lstrip('.')
+l = sys.argv[1].lstrip('.') # forgive using "." in file extension
 
 # this is admittedly a despicable number of conditionals,
 # but blame python for not having a fucking switch statement
