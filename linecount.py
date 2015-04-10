@@ -41,7 +41,7 @@ luaLike = ["lua", "adb", "ads", "e", "ex", "exw", "edb", "hs", "lhs"]
 pythonLike = ["py", "r", "sh", "pl", "jl", "rbw", "rb"]
 
 # lisp-like comment styles
-lispExtensions = ["clj", "cljs", "edn", "lisp", "lsp", "l", "cl", "fasl"]
+lispLike = ["clj", "cljs", "edn", "lisp", "lsp", "l", "cl", "fasl"]
 
 if language in cLike:
 	comment = "//"
@@ -66,7 +66,7 @@ elif language in pythonLike:
 		multistart = "=begin"
 		multiend = "=end"
 
-elif language in lispExtensions:
+elif language in lispLike:
 	comment = ";"
 
 else:
