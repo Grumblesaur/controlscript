@@ -86,38 +86,40 @@ else:
 
 # counting variables
 total = 0
-code = 0
-noncode = 0
+codeLines = 0
+commentLines = 0
+whitespaceLines = 0
 isMulti = False
 
 for line in readfile:
-
-	# empty or single-comment logic
+	temp = line.split(comment)
+	
+	# empty line logic
 	if line == "":
-		noncode += 1
+		whitespaceLines += 1
 	elif line.strip() == "":
-		noncode += 1
-	elif line.lstrip()[0:len(comment) - 1] == comment:
-		noncode += 1
-
+		whitespaceLines += 1
+	# comment logic
+	elif (temp[0].strip() == "") and (temp[1] != ""):
+		commentLines += 1
 	# multi-line comment logic
-	elif (multistart in line) and (isMulti == False):
-		noncode += 1
+	elif (isMulti == False) and (multistart in line):
 		isMulti = True
-	elif (multiend in line) and (isMulti == True):
-		noncode += 1
+		commentLines += 1
+	elif (isMulti == True) and (multiend in line):
+		commentLines += 1
 		isMulti = False
-	elif isMulti == True:
-		noncode += 1
-
-	# actual code logic
+	elif isMulti and (multiend not in line) and (multistart not in line):
+		commentLines += 1
+	# code line logic
 	else:
-		code += 1
-
+		codeLines += 1
+	
 # find total length of file
-total = code + noncode
+total = codeLines + commentLines + whitespaceLines
 
 # print information to console
 sys.stdout.write(str(total) + " lines in file '%s'.\n" %filename)
-sys.stdout.write(str(code) + " lines of code.\n")
-sys.stdout.write(str(noncode) + " lines of non-code.\n")
+sys.stdout.write(str(codeLines) + " lines of code.\n")
+sys.stdout.write(str(commentLines) + " lines of comments.\n")
+sys.stdout.write(str(whitespaceLines) + " lines of whitespace.\n")
