@@ -143,7 +143,7 @@ for line in readfile:
 total = codeLines + commentLines + whitespaceLines
 
 # print information to console
-sys.stdout.write(str(total) + " lines in file '%s'.\n" %filename)
+sys.stdout.write(str(total) + " lines in file '%s'.\n" %f)
 sys.stdout.write(str(codeLines) + " lines of code.\n")
 sys.stdout.write(str(commentLines) + " lines of comments.\n")
 sys.stdout.write(str(whitespaceLines) + " lines of whitespace.\n")
