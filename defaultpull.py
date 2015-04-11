@@ -3,7 +3,7 @@ import os, sys
 if sys.version_info >= (3,0):
 	raw_input = input
 
-target = raw_input("Target 'upstream' or 'origin'? ").lower()
+target = raw_input("Target '(u)pstream' or '(o)rigin'? ").lower()
 
 branch = raw_input("Branch (leave blank for 'master'): ").lower()
 

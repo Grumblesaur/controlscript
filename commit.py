@@ -7,7 +7,7 @@ if sys.version_info >= (3,0):
 if len(sys.argv) != 2:
 	# when improper argument count is passed, print usage and exit
 	sys.stdout.write("Usage:\n")
-	sys.stdout.write("'commit <language name or file extension>' \n")
+	sys.stdout.write("'python commit.py <language or file extension>' \n")
 	sys.exit()
 
 l = sys.argv[1].lstrip('.') # forgive using "." in file extension
