@@ -5,25 +5,24 @@ from user import userinfo
 if sys.version_info >= (3,0):
 	raw_input = input
 
-# check for file argument
-if len(sys.argv) != 2:
-	# print usage instructions and bail out if given invalid arguments
+try:
+	f = sys.argv[1]
+except:
 	sys.stdout.write("Usage:\n")
 	sys.stdout.write("'linecount.py <input file>'\n")
 	sys.exit()
 
-f = sys.argv[1]
-
-# require known file extension to count lines of code
-if "." not in f:
-	sys.stdout.write("No file extension!\n")
-	sys.exit()
-
-# grab the file extension and use as language name
-language = f.split(".")[1]
-
+# ensure that the file exists
 if not os.path.isfile(f):
 	sys.stdout.write("File does not exist!\n")
+	sys.exit()
+
+# require a file extension to count lines of code
+try:
+	# grab the file extension and use as language name
+	language = f.split(".")[1]
+except:
+	sys.stdout.write("File has no extension!\n")
 	sys.exit()
 
 # open source file
