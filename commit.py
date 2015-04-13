@@ -19,7 +19,7 @@ for i in xrange(1, len(sys.argv) - 1):
 # this is admittedly a despicable number of conditionals,
 # but blame python for not having a fucking switch statement
 
-for n in xrange(0, len(l)):
-	os.system("git add *.%s" % l[n])
+for n in l:
+	os.system("git add *.%s" % n)
 
 os.system("git commit -a")
