@@ -1,5 +1,4 @@
 import sys, os
-from user import userinfo
 
 # compatibility between python 2 and 3
 if sys.version_info >= (3,0):
