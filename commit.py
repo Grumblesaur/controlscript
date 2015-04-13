@@ -21,6 +21,6 @@ for i in xrange(1, len(sys.argv) - 1):
 # but blame python for not having a fucking switch statement
 
 for n in xrange(0, len(l)):
-	os.system("git add *.%s" % str(l[n]))
+	os.system("git add *.%s" % l[n])
 
 os.system("git commit -a")
