@@ -96,7 +96,7 @@ elif language in lispLike:
 
 else:
 	# provide option for user to add unknown comment styles
-	sys.stdout.write("Language comment style unknown.\n")
+	sys.stdout.write("Language comment style or file extension unknown.\n")
 	ans = raw_input("Would you like to add it now? (Y/N): ").lower()
 	
 	if ans == 'y':
