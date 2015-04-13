@@ -1,6 +1,28 @@
 import sys, os
 from user import userinfo
 
+""" This lines-of-code counting script expects a file whose comments are
+	formatted such that:
+
+		* All multi-line comments begin with the multi-line comment starting
+		  delimiter at the beginning of the line.
+		* All multi-line comments end with the multi-line comment ending
+		  delimiter on its own line with nothing else.
+
+	Inline comments are not counted.
+
+	#!-delimited interpreter instructions are treated as comments in
+	languages whose comment delimiter is the '#' character.
+	
+	Whitespace lines within multi-line comments are counted as whitespace.
+	
+	The end-of-file line is counted as whitespace.
+	
+	For best results, don't use multi-line comments and just type them out
+	in individual lines with single-line comment delimiters at the start
+	of each line.
+"""
+
 # compatibility between Python 2 and Python 3
 if sys.version_info >= (3,0):
 	raw_input = input
@@ -111,6 +133,7 @@ isMulti = False
 for line in readfile:
 	try:
 		temp = line.split(comment)
+		temp2 = line.lstrip()[0:len(multistart)]
 	except:
 		e = sys.exc_info()[0]
 		sys.stdout.write("User did not add new language info to script.\n")
@@ -122,18 +145,25 @@ for line in readfile:
 		whitespaceLines += 1
 	elif line.strip() == "":
 		whitespaceLines += 1
+
 	# comment logic
 	elif (temp[0].strip() == "") and (temp[1] != ""):
 		commentLines += 1
-	# multi-line comment logic
-	elif (isMulti == False) and (multistart in line):
+
+	# expect multi-line comments to begin with delimiter at start of line
+	elif (isMulti == False) and (temp2 == multistart):
 		isMulti = True
 		commentLines += 1
-	elif (isMulti == True) and (multiend in line):
+
+	# expect multi-line comments to end only with delimiter
+	elif (isMulti == True) and (line.strip() == multiend):
 		commentLines += 1
 		isMulti = False
-	elif isMulti and (multiend not in line) and (multistart not in line):
+	
+	# any lines during a multiline comment are automatically comments
+	elif isMulti:
 		commentLines += 1
+
 	# code line logic
 	else:
 		codeLines += 1
