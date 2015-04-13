@@ -131,14 +131,11 @@ whitespaceLines = 0
 isMulti = False
 
 for line in readfile:
-	try:
-		temp = line.split(comment)
-		temp2 = line.lstrip()[0:len(multistart)]
-	except:
-		e = sys.exc_info()[0]
-		sys.stdout.write("User did not add new language info to script.\n")
-		sys.stdout.write("Linecount aborted.\n")
-		sys.exit()
+	# temporary variables for checking the lines in the file
+	# instead of doing these operations in each of the relevant
+	# conditional statements.
+	temp = line.split(comment)
+	temp2 = line.lstrip()[0:len(multistart)]
 
 	# empty line logic
 	if line == "":
