@@ -23,6 +23,11 @@ from user import userinfo
 	of each line.
 """
 
+""" There are a few one-character variables in this code. I apologize, but
+	I am only doing that to keep my lines from wrapping. I'm a decent
+	programmer, I swear.
+"""
+
 # compatibility between Python 2 and Python 3
 if sys.version_info >= (3,0):
 	raw_input = input
@@ -115,7 +120,7 @@ else:
 			# attempt commit again
 			t = sys.argv[1]
 			os.system("python %s/linecount.py %s" %(userinfo.filepath, t))
-			sys.exit() # prevents infinitely recursive program calls
+			sys.exit() # prevents recursive weirdness
 		else:
 			sys.stdout.write("Linecount aborted.\n")
 			sys.exit()
