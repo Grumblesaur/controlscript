@@ -1,5 +1,5 @@
 000 :: LICENSING INFORMATION
-    controlscript package: some helpful tools for handling things in your Linux terminal.
+    controlscript package: simple tools for managing a project directory
     Copyright (C) 2015  James Murphy
 
     This program is free software; you can redistribute it and/or modify
@@ -41,3 +41,7 @@
   #TODO
   
   
+240 :: user.py
+    
+    
+    
