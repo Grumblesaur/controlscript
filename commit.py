@@ -21,5 +21,5 @@ for i in xrange(1, len(sys.argv) - 1):
 
 for n in l:
 	os.system("git add *.%s" % n)
-
+os.system("git add Makefile makefile")
 os.system("git commit -a")
