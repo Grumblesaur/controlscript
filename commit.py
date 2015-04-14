@@ -2,7 +2,6 @@ import sys, os
 
 # compatibility between python 2 and 3
 if sys.version_info >= (3,0):
-	raw_input = input
 	xrange = range
 
 # list of languages/file extensions
