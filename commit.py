@@ -15,9 +15,7 @@ for i in xrange(1, len(sys.argv) - 1):
 		sys.stdout.write("'python commit.py <file extensions>'\n")
 		sys.exit()
 
-# this is admittedly a despicable number of conditionals,
-# but blame python for not having a fucking switch statement
-
+os.system("git add Makefile makefile")
 for n in l:
 	os.system("git add *.%s" % n)
 
