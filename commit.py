@@ -7,9 +7,9 @@ if sys.version_info >= (3,0):
 # list of languages/file extensions
 l = []
 
-for i in xrange(1, len(sys.argv) - 1):
+for k in sys.argv:
 	try:
-		l.append(sys.argv[i + 1].lstrip('.')) # forgive using "." in file extension
+		l.append(k.lstrip('.')) # forgive using "." in file extension
 	except:
 		sys.stdout.write("Usage:\n")
 		sys.stdout.write("'python commit.py <file extensions>'\n")
