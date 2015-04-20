@@ -68,4 +68,4 @@
     Here the user specifies the name of their preferred text editor in Linux
     and the location of where they forked/cloned this Github repo.
     
-    
+    This information is used by the "linecount" script.
