@@ -26,22 +26,46 @@
   through this README.
   
 200 :: push.py
-  #TODO
+  Running "push" in a Github repo will prompt you for some abbreviated input
+  to push to "origin" or "upstream" more quickly. Pushing elsewhere will
+  require you to edit the push.py script or manually use the git commands
+  themselves. This script is purely for convenience.
+  
+  It also defaults pushing to master of whatever destination was initially
+  given, but branch can be specified by the user.
   
   
 210 :: pull.py
-  #TODO
+  Running "pull" is similar to running "push" -- it's just a mechanism for
+  streamlining the process of interfacing git.
   
+215 :: NOTE
+  The "push" and "pull" scripts expect you to have already added remote
+  destinations to push and pull to with git itself. To reiterate, they
+  are merely wrapper processes to reduce the overhead of dealing with
+  git.
   
 220 :: commit.py
-  #TODO
-  
+  The "commit" script takes command line input, expecting file extensions
+  of all the types of files you want added to your git repo. It will also
+  automatically attempt to add a Makefile if it exists. Once all the files
+  with the specified extensions have been added, it will automatically begin
+  the commit process.
   
 230 :: linecount.py
-  #TODO
+  The "linecount" script will take any number of filenames passed as
+  arguments and attempt to count the number of lines of code, comments, and
+  whitespace in each string. Files that do not have a recognized file extension
+  will prompt the user to add the file extensions to the script.
   
+  The add-new-language-style functionality will undergo changes to be better
+  automated and not require the user to view the implementation of the script.
+  
+  The output of "linecount" is a file with the linecounts for each individual
+  file as well as a summary of all the files at the end of the file.
   
 240 :: user.py
-    
+    Here the user specifies the name of their preferred text editor in Linux
+    and the location of where they forked/cloned this Github repo.
     
     
