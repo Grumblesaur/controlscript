@@ -1,33 +1,6 @@
 import sys, os
 from user import userinfo
 
-""" This lines-of-code counting script expects a file whose comments are
-	formatted such that:
-
-		* All multi-line comments begin with the multi-line comment starting
-		  delimiter at the beginning of the line.
-		* All multi-line comments end with the multi-line comment ending
-		  delimiter on its own line with nothing else.
-
-	Inline comments are not counted.
-
-	#!-delimited interpreter instructions are treated as comments in
-	languages whose comment delimiter is the '#' character.
-	
-	Whitespace lines within multi-line comments are counted as whitespace.
-	
-	The end-of-file line is counted as whitespace.
-	
-	For best results, don't use multi-line comments and just type them out
-	in individual lines with single-line comment delimiters at the start
-	of each line.
-"""
-
-""" There are a few one-character variables in this code. I apologize, but
-	I am only doing that to keep my lines from wrapping. I'm a decent
-	programmer, I swear.
-"""
-
 # compatibility between Python 2 and Python 3
 if sys.version_info >= (3,0):
 	raw_input = input
@@ -54,7 +27,7 @@ for f in sys.argv:
 	# ensure that the file exists
 	if not os.path.isfile(f):
 		sys.stdout.write("File '%s' does not exist!\n" %f)
-		sys.exit()
+		continue
 	
 	# require a file extension to count lines of code
 	try:
@@ -126,16 +99,10 @@ for f in sys.argv:
 			
 			# return to the initial directory
 			os.system("cd %s" %prev)
+			
+			sys.stdout.write("Linecount aborted.\n")
+			sys.exit()
 				
-			ans2 = raw_input("Attempt linecount again? (Y/N): ")
-			if ans2.lower() == "y":
-				# attempt linecount again
-				t = sys.argv[1]
-				os.system("python %s/linecount.py %s"%(userinfo.filepath,t))
-				sys.exit() # prevents recursive weirdness
-			else:
-					sys.stdout.write("Linecount aborted.\n")
-					sys.exit()
 		else:
 			sys.stdout.write("Linecount aborted.\n")
 			sys.exit()
