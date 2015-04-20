@@ -17,6 +17,8 @@ for k in sys.argv:
 
 os.system("git add Makefile makefile")
 for n in l:
+	if n is sys.argv:
+		continue
 	os.system("git add *.%s" % n)
 
 os.system("git commit -a")
