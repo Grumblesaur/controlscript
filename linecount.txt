@@ -3,32 +3,7 @@
 30 lines of comments.
 31 lines of whitespace.
 
-35 lines in file 'styles.txt'.
-14 lines of code.
-13 lines of comments.
-8 lines of whitespace.
-
-24 lines in file 'commit.py'.
-17 lines of code.
-2 lines of comments.
-5 lines of whitespace.
-
-20 lines in file 'pull.py'.
-13 lines of code.
-0 lines of comments.
-7 lines of whitespace.
-
-23 lines in file 'push.py'.
-16 lines of code.
-0 lines of comments.
-7 lines of whitespace.
-
-19 lines in file 'alias.sh'.
-5 lines of code.
-10 lines of comments.
-4 lines of whitespace.
-
-280 lines in files overall.
-163 lines of code.
-55 lines of comments.
-62 lines of whitespace.
+159 lines in files overall.
+98 lines of code.
+30 lines of comments.
+31 lines of whitespace.

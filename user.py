@@ -2,5 +2,5 @@
 # directory path and text editor name
 
 class userinfo(object):
-	filepath = "/home/james/Programming/shellscripts"
+	filepath = "/home/james/Programming/python/shellscripts"
 	editor = "vim" # e.g. vim, vi, emacs, etc...

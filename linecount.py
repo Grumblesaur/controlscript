@@ -15,7 +15,7 @@ if len(sys.argv) < 2:
 
 # file for comment styles
 try:
-	stylefile = open("styles.txt", 'r')
+	stylefile = open("%s/styles.txt" % userinfo.filepath, 'r')
 except:
 	say("File 'styles.txt' is missing!\n")
 	sys.exit()
