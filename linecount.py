@@ -1,20 +1,23 @@
 import sys, os
 from user import userinfo
 
+# alias long print function name to shorter name
+say = sys.stdout.write
+
 # compatibility between Python 2 and Python 3
 if sys.version_info >= (3,0):
 	raw_input = input
 
 if len(sys.argv) < 2:
-	sys.stdout.write("Usage:\n")
-	sys.stdout.write("'linecount.py <source code files>'\n")
+	say("Usage:\n")
+	say("'linecount.py <source code files>'\n")
 	sys.exit()
 
 # file for comment styles
 try:
 	stylefile = open("styles.txt", 'r')
 except:
-	sys.stdout.write("File 'styles.txt' is missing!\n")
+	say("File 'styles.txt' is missing!\n")
 	sys.exit()
 
 # code to retrieve info from style file
@@ -47,7 +50,7 @@ for f in sys.argv:
 	
 	# ensure that the file exists
 	if not os.path.isfile(f):
-		sys.stdout.write("File '%s' does not exist!\n" %f)
+		say("File '%s' does not exist!\n" %f)
 		continue
 	
 	# require a file extension to count lines of code
@@ -55,7 +58,7 @@ for f in sys.argv:
 		# grab the file extension and use as language name
 		language = f.split(".")[1]
 	except:
-		sys.stdout.write("File %s has no extension!\n" %f)
+		say("File %s has no extension!\n" %f)
 		continue
 	
 		# open source file
@@ -75,7 +78,7 @@ for f in sys.argv:
 	# didn't find the comment style
 	if comment == "":
 		# provide option for user to add unknown comment styles
-		sys.stdout.write("Language or file extension unknown.\n")
+		say("Language %s or file extension unknown.\n" %language)
 		ans = raw_input("Would you like to add it now? (Y/N): ").lower()
 			
 		if ans == 'y':
@@ -89,7 +92,7 @@ for f in sys.argv:
 			# return to the initial directory
 			os.system("cd %s" %prev)
 			
-		sys.stdout.write("Linecount aborted.\n")
+		say("Linecount aborted.\n")
 		sys.exit()
 
 	# counting variables

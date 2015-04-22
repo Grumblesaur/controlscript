@@ -1,9 +1,4 @@
-160 lines in file 'linecount.py'.
-101 lines of code.
-29 lines of comments.
-30 lines of whitespace.
-
-160 lines in files overall.
-101 lines of code.
-29 lines of comments.
-30 lines of whitespace.
+0 lines in files overall.
+0 lines of code.
+0 lines of comments.
+0 lines of whitespace.
