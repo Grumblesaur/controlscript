@@ -1,0 +1,17 @@
+!! This is a comment. In a comment style sheet. How 'bout that.
+!! Inline comments will cause linecount.py to blow chunks.
+!! Empty lines are fine.
+	!! Indented comments are fine.
+
+cpp c cc h hpp cxx hxx hh java cs m d b
+@@ // /* */
+
+lua adb ads e ex exw edb hs lhs
+@@ -- ```` ````
+
+py r sh pl jl rbw rb
+@@ # ```` ````
+
+clj cljs edn lisp lsp l cl fasl
+@@ ; ```` ````
+

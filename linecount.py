@@ -10,6 +10,27 @@ if len(sys.argv) < 2:
 	sys.stdout.write("'linecount.py <source code files>'\n")
 	sys.exit()
 
+# file for comment styles
+try:
+	stylefile = open("styles.txt", 'r')
+except:
+	sys.stdout.write("File 'styles.txt' is missing!\n")
+	sys.exit()
+
+# code to retrieve info from style file
+filetypes = []
+delimiters = []
+for line in stylefile:
+	line = line.strip()
+	if line[0:2] == "!!":
+		continue
+	elif line.strip() == "":
+		continue
+	elif line[0:2] == "@@":
+		delimiters.append(line.split(" ")[1:])
+	else:
+		filetypes.append(line.split(" "))
+	
 outfile = open("linecount.txt", 'w')
 
 # lines of code overall
@@ -39,52 +60,20 @@ for f in sys.argv:
 	
 		# open source file
 	readfile = open(f, 'r')
-	
-	comment = "" # guaranteed not to be empty during counting process
-	multistart = '`````' # dummy marks for languages w/o multiline comments
-	multiend = '`````'   # program would blow chunks w/ empty strings
-	
-	# language style options
-	
-	# c-like comment styles
-	cLike = ["c++", "cpp", "c", "cc", "h", "hpp", "cxx",
-				   "hxx", "hh", "java", "cs", "m", "d", "b"]
-	# lua-like comment styles
-	luaLike = ["lua", "adb", "ads", "e", "ex", "exw", "edb", "hs", "lhs"]
 
-	# python-like comment styles
-	pythonLike = ["py", "r", "sh", "pl", "jl", "rbw", "rb"]
+	comment = ""
+	multistart = ""
+	multiend = ""
 	
-	# lisp-like comment styles
-	lispLike = ["clj", "cljs", "edn", "lisp", "lsp", "l", "cl", "fasl"]
+	# search for the comment style
+	for i in xrange(0, len(filetypes)):
+		if language in filetypes[i]:
+			comment = delimiters[i][0]
+			multistart = delimiters[i][1]
+			multiend = delimiters[i][2]
 	
-	if language in cLike:
-		comment = "//"
-		multistart = "/*"
-		multiend = "*/"
-	
-	elif language in luaLike:
-		comment = "--"
-		if language == "lua":
-			multistart = "--[["
-			multiend = "]]"
-
-	elif language in pythonLike:
-		comment = "#"
-		if language == "py":
-			multistart = '"""'
-			multiend = '"""'
-		elif language == "jl":
-			multistart = "#="
-			multiend = "=#"
-		elif language == "rb" or language == "rbw":
-			multistart = "=begin"
-			multiend = "=end"
-
-	elif language in lispLike:
-		comment = ";"
-
-	else:
+	# didn't find the comment style
+	if comment == "":
 		# provide option for user to add unknown comment styles
 		sys.stdout.write("Language or file extension unknown.\n")
 		ans = raw_input("Would you like to add it now? (Y/N): ").lower()
@@ -95,17 +84,13 @@ for f in sys.argv:
 			
 			# go to the script and edit it
 			os.system("cd %s" %userinfo.filepath)
-			os.system("%s linecount.py" %userinfo.editor)
+			os.system("%s styles.txt" %userinfo.editor)
 			
 			# return to the initial directory
 			os.system("cd %s" %prev)
 			
-			sys.stdout.write("Linecount aborted.\n")
-			sys.exit()
-				
-		else:
-			sys.stdout.write("Linecount aborted.\n")
-			sys.exit()
+		sys.stdout.write("Linecount aborted.\n")
+		sys.exit()
 
 	# counting variables
 	total = 0
