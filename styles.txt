@@ -2,16 +2,34 @@
 !! Inline comments will cause linecount.py to blow chunks.
 !! Empty lines are fine.
 	!! Indented comments are fine.
+!! If a language doesn't account for multi-line comments,
+!! "````" is the preferred dummy delimiter, since it's probably never
+!! going to be used.
 
+
+!! slash style
 cpp c cc h hpp cxx hxx hh java cs m d b
 @@ // /* */
 
-lua adb ads e ex exw edb hs lhs
+!! hyphen style
+adb ads e ex exw edb hs lhs
 @@ -- ```` ````
 
-py r sh pl jl rbw rb
+!! lua style
+lua
+@@ -- --[[ ]]
+
+!! hash/pound style
+r sh pl jl rbw rb
 @@ # ```` ````
+
+!! python style
+py
+@@ # """ """
 
 clj cljs edn lisp lsp l cl fasl
 @@ ; ```` ````
 
+!! styles.txt style
+txt
+@@ !! ```` ````
