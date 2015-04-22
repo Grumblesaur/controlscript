@@ -15,7 +15,11 @@ for k in sys.argv:
 		sys.stdout.write("'python commit.py <file extensions>'\n")
 		sys.exit()
 
-os.system("git add Makefile makefile")
+if os.path.isfile("Makefile"):
+	os.system("git add Makefile")
+elif os.path.isfile("makefile"):
+	os.system("git add makefile")
+
 for n in l[1:]:
 	os.system("git add *.%s" % n)
 
