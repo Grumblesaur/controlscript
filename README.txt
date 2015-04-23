@@ -1,4 +1,18 @@
-000 :: LICENSING INFORMATION
+TABLE OF CONTENTS
+
+010 :: LICENSING INFORMATION
+
+100 :: DEPENDENCES
+110 :: DISCLAIMERS	
+
+200 :: push.py
+210 :: pull.py
+215 :: NOTE
+220 :: commit.py
+230 :: linecount.py
+240 :: user.py
+
+010 :: LICENSING INFORMATION
     controlscript package: simple tools for managing a project directory
     Copyright (C) 2015  James Murphy
 
@@ -24,6 +38,14 @@
   you'll need to have Python installed as well, but if you hadn't figured
   that out already, I'd be curious as to why you're even still scrolling
   through this README.
+
+  The controlscript package is designed to be version agnostic. That is,
+  it will function with the latest versions of Python 2 and Python 3.
+
+110 :: DISCLAIMERS
+  I have designed this package in and for a Unix-like environment. If you
+  have any wish to use this package of scripts in a Windows environment,
+  you're on your own.
   
 200 :: push.py
   Running "push" in a Github repo will prompt you for some abbreviated input
@@ -55,14 +77,13 @@
 230 :: linecount.py
   The "linecount" script will take any number of filenames passed as
   arguments and attempt to count the number of lines of code, comments, and
-  whitespace in each string. Files that do not have a recognized file extension
-  will prompt the user to add the file extensions to the script.
+  whitespace in each string. Files that do not have a recognized file
+  extension will prompt the user to add the file extensions to the file
+  'styles.txt'.
   
-  The add-new-language-style functionality will undergo changes to be better
-  automated and not require the user to view the implementation of the script.
-  
-  The output of "linecount" is a file with the linecounts for each individual
-  file as well as a summary of all the files at the end of the file.
+  The output of "linecount" is a file with the linecounts for each
+  individual file as well as a summary of all the files at the end of the
+  file.
   
 240 :: user.py
     Here the user specifies the name of their preferred text editor in Linux
