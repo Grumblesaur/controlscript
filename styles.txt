@@ -4,7 +4,8 @@
 	!! Indented comments are fine.
 !! If a language doesn't account for multi-line comments,
 !! "````" is the preferred dummy delimiter, since it's probably never
-!! going to be used.
+!! going to be used. Any other sequence of characters that isn't going to
+!! appear at the start of a source code file is also fine.
 
 
 !! slash style
@@ -27,6 +28,7 @@ r sh pl jl rbw rb
 py
 @@ # """ """
 
+!! lisp-like style
 clj cljs edn lisp lsp l cl fasl
 @@ ; ```` ````
 

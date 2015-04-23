@@ -59,7 +59,9 @@ TABLE OF CONTENTS
   
 210 :: pull.py
   Running "pull" is similar to running "push" -- it's just a mechanism for
-  streamlining the process of interfacing git.
+  streamlining the process of interfacing git. If you want additional
+  functionality, you'll need to add to it yourself, unless I find myself
+  personally needing more out of it.
   
 215 :: NOTE
   The "push" and "pull" scripts expect you to have already added remote
@@ -86,7 +88,7 @@ TABLE OF CONTENTS
   file.
   
 240 :: user.py
-    Here the user specifies the name of their preferred text editor in Linux
-    and the location of where they forked/cloned this Github repo.
-    
-    This information is used by the "linecount" script.
+  Here the user specifies the name of their preferred text editor in Linux
+  and the location of where they forked/cloned this Github repo.
+  
+  This information is used by the "linecount" script.
