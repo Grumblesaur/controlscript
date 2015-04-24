@@ -7,11 +7,11 @@ filepath = os.getcwd()
 
 editor = raw_input("Enter command for your preferred text editor: ")
 
-information = """
+information = '''
 class userinfo(object):
 	filepath = "%s"
 	editor = "%s"
-""" %(filepath, editor)
+''' %(filepath, editor)
 
 userfile = open("user.py", 'w')
 
