@@ -1,5 +1,5 @@
-setup: setup.sh .init.py
-	./setup.sh
+setup: .init.py
+	python .init.py
 
 clean:
 	rm -rf __pycache__
