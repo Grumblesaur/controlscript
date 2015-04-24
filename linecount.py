@@ -1,5 +1,5 @@
 import sys, os
-from .user import userinfo
+from user import userinfo
 
 # alias long print function name to shorter name
 say = sys.stdout.write
