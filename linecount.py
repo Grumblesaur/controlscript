@@ -42,6 +42,7 @@ overall_com = 0
 overall_wsp = 0
 overall_tot = 0
 
+# perform linecount process for every file
 for f in sys.argv:
 
 	# ignore the file being interpreted
@@ -61,9 +62,10 @@ for f in sys.argv:
 		say("File %s has no extension!\n" %f)
 		continue
 	
-		# open source file
+	# open source file
 	readfile = open(f, 'r')
-
+	
+	# initialize comment-delimiter strings
 	comment = ""
 	multistart = ""
 	multiend = ""
@@ -92,6 +94,7 @@ for f in sys.argv:
 			# return to the initial directory
 			os.system("cd %s" %prev)
 			
+		# bail out and let the user restart.
 		say("Linecount aborted.\n")
 		sys.exit()
 
