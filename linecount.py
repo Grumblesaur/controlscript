@@ -24,6 +24,8 @@ except:
 filetypes = []
 delimiters = []
 for line in stylefile:
+	# failure to maintain the formatting of the style file will
+	# result in crashing or undefined behavior
 	line = line.strip()
 	if line[0:2] == "!!":
 		continue
@@ -46,7 +48,7 @@ overall_tot = 0
 for f in sys.argv:
 
 	# ignore the file being interpreted
-	if f == sys.argv[0]:
+	if f is sys.argv[0]:
 		continue
 	
 	# ensure that the file exists
@@ -59,7 +61,7 @@ for f in sys.argv:
 		# grab the file extension and use as language name
 		language = f.split(".")[1]
 	except:
-		say("File %s has no extension!\n" %f)
+		say("File '%s' has no extension!\n" %f)
 		continue
 	
 	# open source file
@@ -80,8 +82,8 @@ for f in sys.argv:
 	# didn't find the comment style
 	if comment == "":
 		# provide option for user to add unknown comment styles
-		say("Language %s or file extension unknown.\n" %language)
-		ans = raw_input("Would you like to add it now? (Y/N): ").lower()
+		say("Language or file extension '%s' unknown.\n" %language)
+		ans = raw_input("Would you like to add it now? (y/N): ").lower()
 			
 		if ans == 'y':
 			# directory where we are currently

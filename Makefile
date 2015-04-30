@@ -1,4 +1,4 @@
-setup: .init.py
+setup: init.py
 	python init.py
 
 clean:

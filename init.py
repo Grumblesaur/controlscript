@@ -1,5 +1,7 @@
 import sys, os
 
+say = sys.stdout.write
+
 if sys.version_info >= (3,0):
 	raw_input = input
 
@@ -20,11 +22,11 @@ userfile = open("user.py", 'w')
 userfile.write(information)
 userfile.close()
 
-sys.stdout.write("Directory initialized.\n")
+say("Directory initialized.\n")
 
 # append aliases to bash alias file if requested
 
-ans = raw_input("Would you like to use aliases for these scripts? (y/N) :")
+ans = raw_input("Would you like to use aliases for these scripts? (y/N):")
 
 if ans.lower() != "y":
 	sys.exit()
@@ -41,4 +43,6 @@ alias linecount='python %s/linecount.py'
 ''' %(filepath, filepath, filepath, filepath)
 
 aliasfile.write(aliases)
+say("Aliases added to .bash_aliases in %s's home folder.\n" %name)
+
 aliasfile.close()
