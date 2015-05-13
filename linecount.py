@@ -151,7 +151,7 @@ for f in sys.argv:
 	overall_wsp += whitespaceLines
 	overall_tot += total
 	
-	# print information to console
+	# print information to file
 	outfile.write("%s lines in file '%s'.\n" %(total, f))
 	outfile.write("%s lines of code.\n" %codeLines)
 	outfile.write("%s lines of comments.\n" %commentLines)
