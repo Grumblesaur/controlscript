@@ -7,6 +7,7 @@ say = sys.stdout.write
 # compatibility between Python 2 and Python 3
 if sys.version_info >= (3,0):
 	raw_input = input
+	xrange = range
 
 if len(sys.argv) < 2:
 	say("Usage:\n")
