@@ -45,4 +45,11 @@ alias linecount='python %s/linecount.py'
 aliasfile.write(aliases)
 say("Aliases added to .bash_aliases in %s's home folder.\n" %name)
 
+bashfile = open("/home/%s/.bashrc" %name, 'a')
+source = 
+'''if [ -f ~/.bash_aliases ]; then
+source ~/.bash_aliases
+fi'''
+bashfile.write(source)
+
 aliasfile.close()
