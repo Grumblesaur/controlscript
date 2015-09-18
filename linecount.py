@@ -7,7 +7,6 @@ say = sys.stdout.write
 # compatibility between Python 2 and Python 3
 if sys.version_info >= (3,0):
 	raw_input = input
-	xrange = range
 
 if len(sys.argv) < 2:
 	say("Usage:\n")
@@ -74,7 +73,8 @@ for f in sys.argv:
 	multiend = ""
 	
 	# search for the comment style
-	for i in xrange(0, len(filetypes)):
+	for i in filetypes:
+		i = filetypes.index(i)
 		if language in filetypes[i]:
 			comment = delimiters[i][0]
 			multistart = delimiters[i][1]

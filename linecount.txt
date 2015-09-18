@@ -1,9 +1,39 @@
-94 lines in file 'README.txt'.
-73 lines of code.
-0 lines of comments.
-21 lines of whitespace.
+26 lines in file 'commit.py'.
+18 lines of code.
+2 lines of comments.
+6 lines of whitespace.
 
-94 lines in files overall.
-73 lines of code.
+165 lines in file 'linecount.py'.
+99 lines of code.
+35 lines of comments.
+31 lines of whitespace.
+
+55 lines in file 'init.py'.
+35 lines of code.
+4 lines of comments.
+16 lines of whitespace.
+
+20 lines in file 'pull.py'.
+13 lines of code.
 0 lines of comments.
-21 lines of whitespace.
+7 lines of whitespace.
+
+23 lines in file 'push.py'.
+16 lines of code.
+0 lines of comments.
+7 lines of whitespace.
+
+4 lines in file 'user.py'.
+3 lines of code.
+0 lines of comments.
+1 lines of whitespace.
+
+37 lines in file 'styles.txt'.
+14 lines of code.
+15 lines of comments.
+8 lines of whitespace.
+
+330 lines in files overall.
+198 lines of code.
+56 lines of comments.
+76 lines of whitespace.
