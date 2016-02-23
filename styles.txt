@@ -6,10 +6,12 @@
 !! "````" is the preferred dummy delimiter, since it's probably never
 !! going to be used. Any other sequence of characters that isn't going to
 !! appear at the start of a source code file is also fine.
+!! @@ indicates to the linecount script that the line contains comment
+!! delimiter information.
 
 
 !! slash style
-cpp c cc h hpp cxx hxx hh java cs m d b
+cpp c cc h hpp cxx hxx hh java cs m d b hdl
 @@ // /* */
 
 !! hyphen style

@@ -125,6 +125,10 @@ for f in sys.argv:
 		elif (temp[0].strip() == "") and (temp[1] != ""):
 			commentLines += 1
 		
+		# using multiline comment delimiters in a single-line comment
+		elif multistart in line and multiend in line:
+			commentLines += 1
+			
 		# expect multiline comments to begin with delimiter at start of line
 		elif (isMulti == False) and (temp2 == multistart):
 			isMulti = True
