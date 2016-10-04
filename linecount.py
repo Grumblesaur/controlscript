@@ -70,9 +70,6 @@ for f in sys.argv[1:]:
 			multistart = delimiters[i][1]
 			multiend = delimiters[i][2]
 	
-	say("lang=" + language + ", comment=" + comment + ", ")
-	say("mstart=" + multistart + ", mend" + multiend + ".\n")
-	
 	# didn't find the comment style
 	if comment == "":
 		# provide option for user to add unknown comment styles
