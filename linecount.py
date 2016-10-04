@@ -45,23 +45,13 @@ overall_wsp = 0
 overall_tot = 0
 
 # perform linecount process for every file
-for f in sys.argv:
-
-	# ignore the file being interpreted
-	if f is sys.argv[0]:
-		continue
-	
-	# ensure that the file exists
-	if not os.path.isfile(f):
-		say("File '%s' does not exist!\n" %f)
-		continue
-	
+for f in sys.argv[1:]:
 	# require a file extension to count lines of code
 	try:
 		# grab the file extension and use as language name
 		language = f.split(".")[1]
 	except:
-		say("File '%s' has no extension!\n" %f)
+		say("File '%s' missing or invalid!\n" %f)
 		continue
 	
 	# open source file
@@ -79,6 +69,9 @@ for f in sys.argv:
 			comment = delimiters[i][0]
 			multistart = delimiters[i][1]
 			multiend = delimiters[i][2]
+	
+	say("lang=" + language + ", comment=" + comment + ", ")
+	say("mstart=" + multistart + ", mend" + multiend + ".\n")
 	
 	# didn't find the comment style
 	if comment == "":
@@ -115,13 +108,13 @@ for f in sys.argv:
 		temp = line.split(comment)
 		temp2 = line.lstrip()[0:len(multistart)]
 		
-		# empty line logic
+		# if a line has no visible characters, it's whitespace
 		if line == "":
 			whitespaceLines += 1
 		elif line.strip() == "":
 			whitespaceLines += 1
 		
-		# comment logic
+		# if line leads with comment marker, it's a comment
 		elif (temp[0].strip() == "") and (temp[1] != ""):
 			commentLines += 1
 		
@@ -134,9 +127,13 @@ for f in sys.argv:
 			isMulti = True
 			commentLines += 1
 		
-		# expect multi-line comments to end only with delimiter
-		elif (isMulti == True) and (line.strip() == multiend):
-			commentLines += 1
+		# if a multi-line comment ends and code begins on the same line,
+		# count it as a line of code
+		elif isMulti and (line.strip() == multiend):
+			if line.split(multiend)[1]:
+				codeLines += 1
+			else:
+				commentLines += 1
 			isMulti = False
 			
 		# any lines during a multiline comment are automatically comments
@@ -157,13 +154,13 @@ for f in sys.argv:
 	overall_tot += total
 	
 	# print information to file
-	outfile.write("%s lines in file '%s'.\n" %(total, f))
-	outfile.write("%s lines of code.\n" %codeLines)
-	outfile.write("%s lines of comments.\n" %commentLines)
-	outfile.write("%s lines of whitespace.\n\n" %whitespaceLines)
+	outfile.write("%s lines in file '%s'.\n" % (total, f))
+	outfile.write("%s lines of code.\n" % codeLines)
+	outfile.write("%s lines of comments.\n" % commentLines)
+	outfile.write("%s lines of whitespace.\n\n" % whitespaceLines)
 
 # print summary information about the files passed
-outfile.write("%s lines in files overall.\n" %overall_tot)
-outfile.write("%s lines of code.\n" %overall_loc)
-outfile.write("%s lines of comments.\n" %overall_com)
-outfile.write("%s lines of whitespace.\n" %overall_wsp)
+outfile.write("%s lines in files overall.\n" % overall_tot)
+outfile.write("%s lines of code.\n" % overall_loc)
+outfile.write("%s lines of comments.\n" % overall_com)
+outfile.write("%s lines of whitespace.\n" % overall_wsp)

@@ -15,7 +15,7 @@ cpp c cc h hpp cxx hxx hh java cs m d b hdl
 @@ // /* */
 
 !! hyphen style
-adb ads e ex exw edb hs lhs
+adb ads e ex exw edb hs lhs sql
 @@ -- ```` ````
 
 !! lua style
